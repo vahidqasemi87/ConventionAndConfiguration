@@ -3,40 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Part01.DataAccess;
 
 namespace Part01.Migrations
 {
     [DbContext(typeof(ConfigContext))]
-    partial class ConfigContextModelSnapshot : ModelSnapshot
+    [Migration("20210325110202_init18")]
+    partial class init18
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("config")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Part01.Models.Backing_Filed.Website", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Domain")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Website");
-                });
 
             modelBuilder.Entity("Part01.Models.Index.Car", b =>
                 {
@@ -61,26 +44,6 @@ namespace Part01.Migrations
                     b.ToTable("Car");
                 });
 
-            modelBuilder.Entity("Part01.Models.Naming.BankInfoAtt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ShomareHesab")
-                        .HasColumnType("NVARCHAR(16)")
-                        .HasColumnName("ShHesab");
-
-                    b.Property<string>("ShomareShaba")
-                        .HasColumnType("NVARCHAR(20)")
-                        .HasColumnName("ShShaba");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AttributeBank", "bnk");
-                });
-
             modelBuilder.Entity("Part01.Models.Naming.BankInfoFluent", b =>
                 {
                     b.Property<int>("Id")
@@ -89,12 +52,10 @@ namespace Part01.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ShomareHesab")
-                        .HasColumnType("NVARCHAR(16)")
-                        .HasColumnName("ShHesab");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShomareShaba")
-                        .HasColumnType("NVARCHAR(20)")
-                        .HasColumnName("ShShaba");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -213,36 +174,6 @@ namespace Part01.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PersonFluents");
-                });
-
-            modelBuilder.Entity("Part01.Models.ShadowProperty.Email", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Domain")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("InsertBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("InsertDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UpdateBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatetDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Email");
                 });
 
             modelBuilder.Entity("Part01.Models.Student", b =>
